@@ -3,7 +3,7 @@ require("dotenv").config();
 const connctDB = require("./config/db");
 const router = require("./routes/index.js");
 const logger = require("morgan");
-const port = 4000;
+const port = 7000;
 const app = express();
 
 connctDB();

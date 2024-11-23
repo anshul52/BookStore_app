@@ -5,7 +5,8 @@ const newBook = new mongoose.Schema(
     name: { type: String, required: true },
     desc: { type: String, required: true },
     price: { type: Number, required: true },
-    auther: { type: String, required: true },
+    // author: { type: String, required: true },
+    author_id: { type: mongoose.Schema.Types.ObjectId, ref: "Author" },
     LaunchedAt: { type: Date, default: Date.now },
   },
   {
@@ -15,7 +16,6 @@ const newBook = new mongoose.Schema(
 );
 
 // virtuals
-
 newBook.virtual("discountedPrice").get(function () {
   return this.price - this.price * (8 / 100);
 });

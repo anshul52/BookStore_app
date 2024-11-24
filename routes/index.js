@@ -119,10 +119,9 @@ router.get("/getBooks/:authorName", async (req, res) => {
     if (!authorExist) {
       return res.send({ response: false, message: "Author Not found !" });
     }
-    const book = await Book.find({ author_id: authorExist?._id }).populate(
-      "author_id",
-      "name"
-    );
+    const book = await Book.find({ author_id: authorExist?._id })
+      .lean()
+      .populate("author_id", "name");
 
     if (!book) {
       return res.send({
